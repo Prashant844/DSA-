@@ -1,0 +1,87 @@
+// OPERATION IN DOUBLY LINKED LIST
+
+
+//program Description : WAP to InsertAtBeginning in Doubly Linked List and Traverse after Insertion.
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *prev;
+    struct node *next;
+};
+
+//Insertion at Beginning  in Doubly Linked list
+void insert(struct node **head,struct node **tail ,int data)
+{
+    struct node *newNode;
+    newNode = (struct node*)malloc(sizeof(struct node));
+    newNode->data = data;
+    if(*head == NULL)
+    {
+        newNode->prev = newNode->next = NULL;
+       ( *head)  = newNode;
+    }
+    else
+    {
+        newNode->prev = NULL;
+        newNode->next = (*head);
+        (*head)->prev = newNode;
+        (*head) = newNode;
+    }
+}
+
+//Insertion at End in Double Linked list
+void insertAtEnd(struct node **head,struct node **tail ,int data)
+{
+    struct node *newNode;
+    newNode = (struct node*)malloc(sizeof(struct node));
+    newNode->data = data;
+    if((*head) == NULL)
+    {
+        newNode->prev = newNode->next = NULL;
+        (*head) = newNode;
+        (*tail) = newNode;
+    }
+    else
+    {
+        newNode->next = NULL;
+        newNode->prev =(*tail);
+        (*tail)->next = newNode;
+        (*tail) = newNode;
+    }
+}
+
+//Traversing in Doubly linked list 
+void traverse(struct node **head)
+{
+    struct node *ptr = (*head);
+    if((*head) == NULL)
+    {
+        printf("Linked list is Empty!!!");
+    }
+    else
+    {
+        while((*head) != NULL)
+        {
+            printf("%d ",(*head)->data);
+            (*head) = (*head)->next;
+        }
+    }
+}
+
+int main() {
+struct node *head = NULL,*tail = NULL;
+int element;
+int range = 5;
+while(range!=0)
+{
+printf("Enter element for insert : ");
+scanf("%d",n element);
+    insert(&head,&tail,element);
+    range--;
+}
+    traverse(&head);
+    return 0;
+}
