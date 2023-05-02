@@ -1,0 +1,86 @@
+STACK USING ARRAY
+#include <stdio.h>
+int stack[100],size,top=-1,choice;
+//function prototype.
+void push();
+void pop();
+void show();
+
+int main() {
+    printf("\n ******* Stack Implement Using Array : ******* ");
+    printf("\t\nEnter how many element stored in the Stack : ");
+    scanf("%d",&size);
+    while(choice != 4)
+    {
+    printf("\n\tChoose any one operation for performing on the stack : ");
+            printf("\n\tpress 1 : push");
+            printf("\n\tpress 2 : pop");
+            printf("\n\tpress 3 : Show");
+            printf("\n\tpress 4 : Exit");
+        printf("\n\nEnter your Choice here : ");
+        scanf("%d",&choice);
+        
+        switch(choice)
+        {
+          case 1: 
+          push(); 
+          break;
+          case 2: 
+          printf("\n\tUnder development!!!");
+        //   pop(); 
+          break;
+          case 3: 
+        //   printf("\t\nUnder development!!!");
+          show(); 
+          break;
+          case 4: 
+          printf("\tExit Successfully...");
+          break;
+          
+          default: 
+          printf("\nplease enter a Valid choice here!!!");
+          break;
+        };
+    }
+    return 0;
+}
+
+//PUSH ELEMENT IN THE STACK USING ARRAY.
+void push()
+{
+    int value;
+    if(top == size)
+    {
+        printf("\n\t\tStack is full!!!");
+    }
+    else
+    {
+        for(int i = 0; i<size; i++)
+        {
+    printf("Enter %d / %d Element here for Push in the stack : ",i+1,size);
+    scanf("%d",&value);
+    top = top+1;
+    stack[top] = value;
+        }
+    }
+    printf("\n\t\tALl elements Pushed Successfully in ths Stack.");
+}
+void show()
+{
+        for(int i=top; i>=0; i--)
+        {
+            printf("%d ",stack[i]);
+        }
+        if(stack[top] == -1)
+        printf("\n\t\tStack is Empty!!!");
+}
+void pop()
+{
+ if(top == -1)   
+ printf("\n\t\tStack is empty already!!!");
+ else
+ top = top-1;
+ printf("\n\t\tElement poped Successfully from Stack.");
+}
+
+
