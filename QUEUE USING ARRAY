@@ -1,0 +1,200 @@
+
+// **************** QUEUE IS USING ARRAY ****************
+
+//QUEUE IS A LINEAR DATA STRUCTURE.
+//FOLLOW THE FIFO (FIRST-IN-FIRST-OUT) APPROACH FOR INSERTION OR DELETION OPERATION.
+//ACCORDING TO LINKED LIST , INSERTION AT BEGINNING AND DELETE FROM BEGINNING OPERATION PERFORM FOR IMPLEMENTING QUEUE.
+//THERE ARE TWO POINT CREATE IN THE QUEUE
+//1. FRONT : USE TO GET OUT OF THERE.
+//2. REAR : USE TO INSERT THE ELEMENT PUT THERE.
+
+//THERE ARE MAINLY 5 OPEARTION PERFORM IN QUEUE
+//1. INSERTION
+//2. DELETION
+//3. CHECK IS-EMPTY QUEUE
+//4. CHECK IS-FULL QUEUE
+//5. DISPLAY THE ELEMENET IN QUEUE
+
+#include <stdio.h>
+#define size 5
+
+//FUNCTION PROTOTYPES
+void insert();
+void Delete();
+void isEmpty();
+void isFull();
+void display();
+
+// CREATE A STATIC ARRAY
+int arr[size];
+
+// CRATE TWO VARIABLE FRONT AND REAR FOR INSERTION DELETION
+int front = -1, rear = -1;
+
+// MAIN FUNCTION
+void main()
+{
+    // MENU DRIVEN CODE
+    printf("\n\t ************* QUEUE USING ARRAY *************");
+    printf("\n\n\t\t **************************");
+
+    //CHOOSE VARIABLE FOR CHOSE THE OPERATION
+    int choice;
+    while (choice != 6)
+    {
+        // OPERATION MENU LIST
+        printf("\t\t\n press 1: INSERT NEW ELEMENT IN THE QUEUE");
+        printf("\t\t\n press 2: DELETE AN ELEMENT IN THE QUEUE");
+        printf("\t\t\n press 3: CHECK QUEUE IS EMPTY");
+        printf("\t\t\n press 4: CHECK QUEUE IS FULL");
+        printf("\t\t\n press 5: DISPLAY THE QUEUE ELEMENT");
+        printf("\t\t\n press 6: EXIT ");
+        printf("\t\t\n Enter your choice here : range( 1 - 6 ) : ");
+        scanf("%d", &choice); // READ USER CHOICE BASE ON GIVEN MENU
+        switch (choice)
+        {
+            
+            //INSERTION CASE
+        case 1:
+            insert();
+            break;
+            
+            //DELETION CASE
+        case 2:
+            Delete();
+            break;
+
+            //IS-EMPTY CASE
+        case 3:
+            isEmpty();
+            break;
+
+            //IS-FULL CASE
+        case 4:
+            isFull();
+            break;
+
+            // DISPLAY CASE
+        case 5:
+            display();
+            break;
+
+            //EXIT CASE
+        case 6:
+            printf("Exit Successfully....");
+            break;
+
+            //DEFAULT CASE
+        default:
+            printf("\n\t !!!!!!!! not a valid choice !!!!!!!!");
+            break;
+        }
+    }
+}
+
+// INSERT FUNCTION BODY
+void insert()
+{
+    int item; //CREATING A VARIABLE FOR USER INPUT FOR INSERT ELEMENT IN THE QUEUE.
+    
+    //IF REAR VALUE IS EQAL WITH ARRAY LENGTH, IT MEANS QUEUE IS FULL.
+    if (rear == (size - 1))
+    {
+        printf("\nQueue is full!!!");
+    }
+
+    //IF REAR AND FRONT VALUE IS -1, IT MEANS QUEUE IS UNDERFLOW
+    if (front == -1 && rear == -1)
+    {
+        //THEN WE MOVE FORWARD FRONT AND REAT WITH ONE POSITION.
+        front = 0;
+        rear = 0;
+    }
+    //IF REAR IS NOT EQAL WITH ARRAY LENGTH , THEN WE INSERT THE ELEMENT ON REAR POSITION AND INCREMENT BY 1 REAR VALUE.
+    else
+    {
+        rear = rear + 1;
+    }
+
+    //HERE WE TAKE THE USER INPUT FOR ELEMENT.
+    printf("\n\tEnter the Inserted element here : ");
+    scanf("%d", &item);
+    //PUT THE ELEMENT ON THERE.
+    arr[rear] = item;
+    //DISPLAY THE STATUS OF OPERATION.
+    printf("\n\tElement Inserted Successfully...");
+}
+
+// DELETE FUNCTION BODY
+void Delete()
+{   
+    // int item;
+    //IF FRONT VALUE IS -1, IT MEANS NO ELEMENT PRESENT IN THE QUEUE.
+    //OR FRONT VALUE IS GREATER THAN THE REAR VALUE, IT ALSE BE MEANS NO ELEMENT PRESENT IN THE QUEUE.
+    if (front == -1 || (front > rear))
+    {
+        printf("Queue is empty!!!");
+    }
+    else
+    {
+        // item = arr[front];
+        
+        //IF FRONT VALUE IS EQUA TO REAR VALUE, IT MEANS ALL ELEMENT ARE REMOVED.
+        //THEN WE UPDATE THE REAR AND FRONT VALUE TO THE INITIAL POSITION.
+        if (front == rear)
+        {
+            front = -1;
+            rear = -1;
+        }
+        else
+        {
+            //IF FRONT VALUE IS NOT -1 OR EQAL WITH REAR , THEN WE JUST MOVE FORWARD THE FRONT VALUE BY 1.
+            front = front + 1;
+        }
+
+        //DISPLAY THE OPERATION STATUS
+        printf("\nvalue deleted ");
+    }
+}
+
+// IS-FULL FUNCTION BODY
+void isFull()
+{
+    //IF FRONT VALUE IS 0 AND REAR VALUE IS EQUA WITH ARRAY LENGTH, IT MEANS NO SPACE AVALIABLE.
+    if ((front == 0) && (rear == size))
+
+        printf("Queue is Full!");
+    else
+        printf("Queue is not Full!!!");
+}
+
+//IS-EMPTY FUNCTION BODY
+void isEmpty()
+{
+    //IF FRONT AND REAR VALUE IS -1, IT MEANS NO ELEMENT PRESENT IN THE QUEUE.
+    if ((front == -1) && (rear == -1))
+        printf("Queue is empty!");
+    else
+        printf("Queue is not Empty!!!");
+}
+
+//DISPLAY FUNCTION BODY
+void display()
+{
+    int i; //CREATE AN ITERATOR VARIABLE.
+
+    //IF REAR VALUE IS -1, IT MEANS NO ELEMENT PRESENT IN THE QUEUE.
+    if (rear == -1)
+    {
+        printf("\nEmpty queue\n");
+    }
+    else
+    {
+        //OTHERWISE CREATE A LOOP , FOR DISPLAY THE QUEUE ELEMENTS
+        printf("\n ********** QUEUE ELEMENTS **********\n");
+        for (i = front; i <= rear; i++)
+        {
+            printf("%d ", arr[i]);
+        }
+    }
+}
