@@ -1,0 +1,35 @@
+// ************* ARRAY SORTING *************
+
+//IN THE ARRAY SORTING PROCEDURE , WE ARE COMPARING THE 2 CONSECUTIVE ELEMENTS
+//IF FIRST ONE IS GREATER THAN ANOTHER, THEN SWAP IT, OTHERWISE MOVE FORWARD TO 1 STEP.
+
+#include <stdio.h>
+void main()
+{
+    // CREATING STATIC ARRAY
+    int arr[10] = {5, 7, 6, 8, 1, 2, 3, 4, 10, 9};
+    
+    // CALCULATE THE LENGTH OF THE ARRAY USING SIZEOF FUNCTION.
+    int length = sizeof(arr) / sizeof(arr[0]);
+
+    // FIRSTLY WE SORT THE GIVEN ARRAY.
+    // ARRAY SORTING PROCEDURE
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = i + 1; j < length; j++)
+        {
+            // IF COMPARISON IS TRUE, THEN SWAP THE VALUE.
+            if (arr[i] > arr[j])
+            {
+                // HERE WE SWAP THE VALUE BASED ON COMPARISION.
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        printf("\n ********* SORTED ARRAY OUTPUT********* ");
+        printf("%d ",arr[i]);
+        printf("\n");
+    } // SORTING PROCEDURE END
+
+}
