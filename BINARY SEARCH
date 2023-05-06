@@ -1,0 +1,88 @@
+
+// *********** BINARY SEARCHING ***********
+
+// THIS IS THE BINARY SEARCH PROGRAM IN C LANGUAGE.
+// IN THE BINARY SEARCH, NO NEED TO TRAVERSE WHOLE ARRAY ARRAY AGAIN AND AGAIN AFTER INITIAL SEARCING.
+// BINARY SEARCHING DISCARD THE UNWANTED PART OF THE ARRAY AFTER INITIAL SEARCH.
+// BINARY SEARCHING ALWAYS PERFORM ON THE SORTED ARRAY, EITHER IT WILL BE IN ASCENDING ORDER OR DECENDING ORDER.
+
+#include <stdio.h>
+//BINARY SEARCHING FUNCTION PROTOTYPE, WHICH RECIEVE 2 ARGUMENTS
+//1. ARRAY FOR BINARY SEARCH
+//2. SEARCH KEY
+int binarySearch(int array[], int key);
+
+//MAIN METHOD
+void main()
+{
+    // CREATING STATIC ARRAY
+    int arr[10] = {5, 7, 6, 8, 1, 2, 3, 4, 10, 9};
+    
+    // CALCULATE THE LENGTH OF THE ARRAY USING SIZEOF FUNCTION.
+    int length = sizeof(arr) / sizeof(arr[0]);
+
+    // FIRSTLY WE SORT THE GIVEN ARRAY.
+    // ARRAY SORTING PROCEDURE
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = i + 1; j < length; j++)
+        {
+            // IF COMPARISON IS TRUE, THEN SWAP THE VALUE.
+            if (arr[i] > arr[j])
+            {
+                // HERE WE SWAP THE VALUE BASED ON COMPARISION.
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        printf("\n ********* SORTED ARRAY OUTPUT********* ");
+        printf("%d ",arr[i]);
+        printf("\n");
+    } // SORTING PROCEDURE END
+
+    // HERE WE TAKING THE USER INPUT AS A SEARCH KEY, WHICH FOUND IN AN ARRAY.
+    int key;
+    printf("\nENTER THE SEARCH KEY HERE : ");
+    scanf("%d", &key);
+
+    //HERE WE STORE THE RETURN ADDRESS OF THE KEY IN THE INDEX VARIABLE, WHICH IS RETURN BY BINARY-SEARCH FUNCTION.
+    int index = binarySearch(arr, key);
+    
+    //DISPLAY THE INDEX OF THE KEY
+    printf("\nkey %d found on the index %d. ",key,index);
+}
+
+// BINARY SEARCH FUNCTION BODY
+int binarySearch(int array[], int key)
+{   
+    //CALCULATE THE LENGTH OF THE ARRAY FOR THE SET THE END POINT OF THE INITIAL BINARY SEARCH.
+    int size = sizeof(array)/sizeof(array[0]);
+
+    // CREATING 3 VARIABLE START,END,MID AND THE SET THE INITIAL VALUE.
+    int start = 0;
+    int end = size - 1;
+    int mid = start + (end - start) / 2; // FINDING MID INDEX.
+
+    // SEARCH UNTILL START INDEX IS LESS-THAN END INDEX.
+    while(start <= end)
+    {
+        //COMPARE THE MID ELEMENT WITH THE SEARCH KEY, IF IT IS MATCHED THEN RETURN THE MID INDEX.
+        if(array[mid] == key)
+        {return mid;}
+
+        //IF KEY VALUE IS GREATER THAN THE MID INDEX VALUE, THEN UPDATE THE STARTING INDEX.
+        if( key > array[mid] )
+        {start = mid + 1;}
+
+        //IF KEY VALUE IS LESS THAN THE MID INDEX VALUE, THEN UPDATE THE END INDEX.
+        else
+        {end = mid - 1;}
+
+        //HERE WE UPDATE THE MID INDEX, BECAUSE START OR END INDEX WAS CHANGED.
+        mid = start + (end - start) / 2;
+    }
+
+    //IF SEARCH KEY IS NOT FOUND IN THE ARRAY, THEN RETURN ONLY -1.
+    return -1;
+}
