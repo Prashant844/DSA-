@@ -26,8 +26,8 @@ int main() {
           push(); 
           break;
           case 2: 
-          printf("\n\tUnder development!!!");
-        //   pop(); 
+          // printf("\n\tUnder development!!!");
+           pop(); 
           break;
           case 3: 
         //   printf("\t\nUnder development!!!");
