@@ -42,9 +42,9 @@ void main()
     int choice;
     while (choice != 6)
     {
-        // OPERATION MENU LIST
-        printf("\t\t\n press 1: INSERT NEW ELEMENT IN THE QUEUE");
-        printf("\t\t\n press 2: DELETE AN ELEMENT IN THE QUEUE");
+        // QUEUE OPERATION MENU LIST
+        printf("\t\t\n press 1: INSERT NEW ELEMENT (ENQUEUE)");
+        printf("\t\t\n press 2: DELETE AN ELEMENT (DEQUEUE)");
         printf("\t\t\n press 3: CHECK QUEUE IS EMPTY");
         printf("\t\t\n press 4: CHECK QUEUE IS FULL");
         printf("\t\t\n press 5: DISPLAY THE QUEUE ELEMENT");
